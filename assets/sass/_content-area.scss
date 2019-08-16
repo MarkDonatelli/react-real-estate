@@ -129,7 +129,7 @@
       -webkit-background-size: cover;
       -moz-background-size: cover;
       -o-background-size: cover;
-      background-size: cover;
+      background-size: cover !important;
       min-height: 200px;
       -webkit-border-top-left-radius: 5px;
       -webkit-border-top-right-radius: 5px;
@@ -148,10 +148,13 @@
       }
 
       .address {
+        font-size: 1.3rem;
+        text-transform: capitalize;
         transition: all 0.4s ease-in-out;
         position: absolute;
         bottom: 20px;
         opacity: 1;
+        text-shadow: 0 1px 4px rgba(91,91,91,1);
       }
 
       .details {
@@ -196,7 +199,7 @@
           height: 35px;
           border-radius: 50%;
           border: 2px solid white;
-          background: url(https://content-stage.likewiseapp.net/uploads/3eb6cf23-895b-45e9-b92c-5fb1b457dd04/bill-gates-profile-pic.jpg)
+          background: url(https://media.licdn.com/dms/image/C4E03AQG1ujR2fBgG6Q/profile-displayphoto-shrink_200_200/0?e=1571270400&v=beta&t=6rz-4dYzd89M3FJCASbakpSjJtaTDX60b6fgMDPM6iI)
             no-repeat center center;
           -webkit-background-size: cover;
           -moz-background-size: cover;
@@ -273,6 +276,31 @@
     background: $pink;
   }
 }
+
+#pagination {
+  text-align: center;
+  .pages {
+    margin: 0 auto;
+    display: inline-block;
+    background: white;
+    -webkit-box-shadow: 0px 9px 15px -4px rgba(224, 224, 224, 1);
+    -moz-box-shadow: 0px 9px 15px -4px rgba(224, 224, 224, 1);
+    box-shadow: 0px 9px 15px -4px rgba(224, 224, 224, 1);
+    li {
+      display: inline-block;
+      padding: 20px 30px;
+      cursor: pointer;
+      &:hover,
+      &.active {
+        color: white;
+        font-weight: 700;
+        background: $pink;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
 .col-md-3 {
   width: 25%;
   display: inline-block;
