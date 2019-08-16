@@ -25,131 +25,217 @@ var Filter = function (_Component) {
     var _this = _possibleConstructorReturn(this, (Filter.__proto__ || Object.getPrototypeOf(Filter)).call(this));
 
     _this.state = {
-      name: 'Mark'
+      name: "Mark"
     };
     return _this;
   }
 
   _createClass(Filter, [{
-    key: 'render',
+    key: "render",
     value: function render() {
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'section',
-        { id: 'filter' },
+        "section",
+        { id: "filter" },
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          'div',
-          { className: 'inside' },
+          "div",
+          { className: "inside" },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'h4',
+            "h4",
             null,
-            'Filter'
+            "Filter"
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'select',
-            { name: 'neighborhood', className: 'filters neighborhood', onChange: this.props.change },
+            "select",
+            {
+              name: "neighborhood",
+              className: "filters neighborhood",
+              onChange: this.props.change
+            },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              'option',
-              { value: 'Ridgewood' },
-              'Ridgewood'
+              "option",
+              { value: "Ridgewood" },
+              "Ridgewood"
             ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              'option',
-              { value: 'Boston' },
-              'Boston'
+              "option",
+              { value: "Boston" },
+              "Boston"
             ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              'option',
-              { value: 'Miami' },
-              'Miami'
+              "option",
+              { value: "Miami" },
+              "Miami"
             )
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'select',
-            { name: 'housetype', className: 'filters housetype' },
+            "select",
+            {
+              name: "housetype",
+              className: "filters housetype",
+              onChange: this.props.change
+            },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              'option',
-              null,
-              'Ranch'
+              "option",
+              { value: "Ranch" },
+              "Ranch"
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              "option",
+              { value: "Apartment" },
+              "Apartment"
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              "option",
+              { value: "Studio" },
+              "Studio"
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              "option",
+              { value: "Room" },
+              "Room"
             )
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'select',
-            { name: 'bedrooms', className: 'filters bedrooms' },
+            "select",
+            {
+              name: "bedrooms",
+              className: "filters bedrooms",
+              onChange: this.props.change
+            },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              'option',
-              null,
-              '2 BR'
+              "option",
+              { value: "1" },
+              "1 BR"
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              "option",
+              { value: "2" },
+              "2 BR"
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              "option",
+              { value: "3" },
+              "3 BR"
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              "option",
+              { value: "4" },
+              "4 BR"
             )
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'div',
-            { className: 'filters price' },
+            "div",
+            { className: "filters price" },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              'span',
-              { className: 'title' },
-              'Price'
+              "span",
+              { className: "title" },
+              "Price"
             ),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'text', name: 'min-price', className: 'min-price' }),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'text', name: 'max-price', className: 'max-price' })
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", {
+              type: "text",
+              name: "min_price",
+              className: "min-price",
+              onChange: this.props.change,
+              value: this.props.globalState.min_price
+            }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", {
+              type: "text",
+              name: "max_price",
+              className: "max-price",
+              onChange: this.props.change,
+              value: this.props.globalState.max_price
+            })
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'div',
-            { className: 'filters floor-space' },
+            "div",
+            { className: "filters floor-space" },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              'span',
-              { className: 'title' },
-              'Floor Space'
+              "span",
+              { className: "title" },
+              "Floor Space"
             ),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'text', name: 'min-floor-space', className: 'min-floor-space' }),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'text', name: 'max-floor-space', className: 'max-floor-space' })
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", {
+              type: "text",
+              name: "min_floor_space",
+              className: "min-floor-space",
+              onChange: this.props.change,
+              value: this.props.globalState.min_floor_space
+            }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", {
+              type: "text",
+              name: "max_floor_space",
+              className: "max-floor-space",
+              onChange: this.props.change,
+              value: this.props.globalState.max_floor_space
+            })
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'div',
-            { className: 'filters extras' },
+            "div",
+            { className: "filters extras" },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              'span',
-              { className: 'title' },
-              'Extras'
+              "span",
+              { className: "title" },
+              "Extras"
             ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              'label',
-              { 'for': 'extras' },
+              "label",
+              { htmlFor: "extras" },
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                'span',
+                "span",
                 null,
-                'Elevators'
+                "Elevators"
               ),
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { name: 'extras', value: 'elevator', type: 'checkbox' })
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", {
+                name: "elevator",
+                value: "elevator",
+                type: "checkbox",
+                onChange: this.props.change
+              })
             ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              'label',
-              { 'for': 'extras' },
+              "label",
+              { htmlFor: "extras" },
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                'span',
+                "span",
                 null,
-                'Swimming Pool'
+                "Swimming Pool"
               ),
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { name: 'extras', value: 'swimming-pool', type: 'checkbox' })
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", {
+                name: "swimming_pool",
+                value: "swimming_pool",
+                type: "checkbox",
+                onChange: this.props.change
+              })
             ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              'label',
-              { 'for': 'extras' },
+              "label",
+              { htmlFor: "extras" },
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                'span',
+                "span",
                 null,
-                'Finished Basement'
+                "Finished Basement"
               ),
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { name: 'extras', value: 'finished-basement', type: 'checkbox' })
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", {
+                name: "finished_basement",
+                value: "finished-basement",
+                type: "checkbox",
+                onChange: this.props.change
+              })
             ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              'label',
-              { 'for': 'extras' },
+              "label",
+              { htmlFor: "extras" },
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                'span',
+                "span",
                 null,
-                'Gym'
+                "Gym"
               ),
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { name: 'extras', value: 'gym', type: 'checkbox' })
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", {
+                name: "gym",
+                value: "gym",
+                type: "checkbox",
+                onChange: this.props.change
+              })
             )
           )
         )
@@ -621,7 +707,15 @@ var App = function (_Component) {
 
     _this.state = {
       name: "Mark",
-      listingsData: __WEBPACK_IMPORTED_MODULE_5__data_listingsData_js__["a" /* default */]
+      listingsData: __WEBPACK_IMPORTED_MODULE_5__data_listingsData_js__["a" /* default */],
+      min_price: 0,
+      max_price: 10000000,
+      min_floor_space: 0,
+      max_floor_space: 50000,
+      elevator: false,
+      finished_basement: false,
+      swimming_pool: false,
+      gym: false
     };
     _this.change = _this.change.bind(_this);
     return _this;
@@ -633,7 +727,7 @@ var App = function (_Component) {
       var _this2 = this;
 
       var name = event.target.name;
-      var value = event.target.value;
+      var value = event.target.type === "checkbox" ? event.target.checked : event.target.value;
       this.setState(_defineProperty({}, name, value), function () {
         console.log(_this2.state);
       });
@@ -649,7 +743,7 @@ var App = function (_Component) {
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           "section",
           { id: "content-area" },
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__Filter_js__["a" /* default */], { change: this.change }),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__Filter_js__["a" /* default */], { change: this.change, globalState: this.state }),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__Listings_js__["a" /* default */], { listingsData: this.state.listingsData })
         )
       );
