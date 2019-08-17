@@ -363,10 +363,6 @@ var Listings = function (_Component) {
       var listingsData = this.props.listingsData;
 
 
-      if (listingsData == undefined || listingsData.length == 0) {
-        return "Sorry your filter did not match any listing";
-      }
-
       return listingsData.map(function (listing, index) {
         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           "div",
@@ -621,7 +617,7 @@ var listingsData = [{
   state: "FL",
   rooms: 6,
   price: 720000,
-  floorspace: 7000,
+  floorspace: 6000,
   extras: ["elevator", "gym"],
   homeType: "Apartment",
   image: "https://www.poconnor.com/wp-content/uploads/2006/03/Apartment.jpg"
@@ -641,7 +637,7 @@ var listingsData = [{
   state: "MA",
   rooms: 6,
   price: 420000,
-  floorspace: 5800,
+  floorspace: 5000,
   extras: ["elevator", "gym"],
   homeType: "Apartment",
   image: "https://weleaseocala.com/wp-content/uploads/2016/11/Ocala-apartments-for-rent.jpg"
@@ -661,7 +657,7 @@ var listingsData = [{
   state: "CA",
   rooms: 7,
   price: 920000,
-  floorspace: 100000,
+  floorspace: 8000,
   extras: ["elevator", "gym"],
   homeType: "House",
   image: "https://cdn.geekwire.com/wp-content/uploads/2018/05/ISm2ws8xojvwbs1000000000.jpg"
@@ -719,11 +715,9 @@ var App = function (_Component) {
       elevator: false,
       finished_basement: false,
       swimming_pool: false,
-      gym: false,
-      filteredData: __WEBPACK_IMPORTED_MODULE_5__data_listingsData_js__["a" /* default */]
+      gym: false
     };
     _this.change = _this.change.bind(_this);
-    _this.filteredData = _this.filteredData.bind(_this);
     return _this;
   }
 
@@ -736,24 +730,12 @@ var App = function (_Component) {
       var value = event.target.type === "checkbox" ? event.target.checked : event.target.value;
       this.setState(_defineProperty({}, name, value), function () {
         console.log(_this2.state);
-        _this2.filteredData();
-      });
-    }
-  }, {
-    key: "filteredData",
-    value: function filteredData() {
-      var _this3 = this;
-
-      var newData = this.state.listingsData.filter(function (item) {
-        return item.price >= _this3.state.min_price && item.price <= _this3.state.max_price && item.floorspace >= _this3.state.min_floor_space && item.floorspace <= _this3.state.max_floor_space;
-      });
-      this.setState({
-        filteredData: newData
       });
     }
   }, {
     key: "render",
     value: function render() {
+      console.log(this.state);
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         "div",
         null,
@@ -762,7 +744,7 @@ var App = function (_Component) {
           "section",
           { id: "content-area" },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__Filter_js__["a" /* default */], { change: this.change, globalState: this.state }),
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__Listings_js__["a" /* default */], { listingsData: this.state.filteredData })
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__Listings_js__["a" /* default */], { listingsData: this.state.listingsData })
         )
       );
     }

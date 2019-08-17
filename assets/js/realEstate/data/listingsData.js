@@ -53,7 +53,7 @@ var listingsData = [
     state: "FL",
     rooms: 6,
     price: 720000,
-    floorspace: 7000,
+    floorspace: 6000,
     extras: ["elevator", "gym"],
     homeType: "Apartment",
     image: "https://www.poconnor.com/wp-content/uploads/2006/03/Apartment.jpg"
@@ -76,7 +76,7 @@ var listingsData = [
     state: "MA",
     rooms: 6,
     price: 420000,
-    floorspace: 5800,
+    floorspace: 5000,
     extras: ["elevator", "gym"],
     homeType: "Apartment",
     image:
@@ -100,7 +100,7 @@ var listingsData = [
     state: "CA",
     rooms: 7,
     price: 920000,
-    floorspace: 100000,
+    floorspace: 8000,
     extras: ["elevator", "gym"],
     homeType: "House",
     image:
