@@ -45,12 +45,22 @@ var Filter = function (_Component) {
             "Filter"
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            "label",
+            { htmlFor: "city" },
+            " City "
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             "select",
             {
-              name: "neighborhood",
-              className: "filters neighborhood",
+              name: "city",
+              className: "filters city",
               onChange: this.props.change
             },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              "option",
+              { value: "All" },
+              "All"
+            ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               "option",
               { value: "Ridgewood" },
@@ -58,22 +68,62 @@ var Filter = function (_Component) {
             ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               "option",
-              { value: "Boston" },
+              { value: "East Boston" },
               "Boston"
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              "option",
+              { value: "Los Angeles" },
+              "Los Angeles"
             ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               "option",
               { value: "Miami" },
               "Miami"
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              "option",
+              { value: "New York" },
+              "New York"
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              "option",
+              { value: "Minneapolis" },
+              "Minneapolis"
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              "option",
+              { value: "San Diego" },
+              "San Diego"
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              "option",
+              { value: "Revere" },
+              "Revere"
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              "option",
+              { value: "Atlanta" },
+              "Atlanta"
             )
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            "label",
+            { htmlFor: "Home Type" },
+            " Home Type "
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             "select",
             {
-              name: "housetype",
-              className: "filters housetype",
+              name: "homeType",
+              className: "filters homeType",
               onChange: this.props.change
             },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              "option",
+              { value: "All" },
+              "All Homes"
+            ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               "option",
               { value: "Ranch" },
@@ -91,9 +141,24 @@ var Filter = function (_Component) {
             ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               "option",
+              { value: "House" },
+              "House"
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              "option",
               { value: "Room" },
               "Room"
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              "option",
+              { value: "Condo" },
+              "Condo"
             )
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            "label",
+            { htmlFor: "rooms" },
+            "Bedrooms"
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             "select",
@@ -104,23 +169,53 @@ var Filter = function (_Component) {
             },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               "option",
+              { value: "0" },
+              "0+ BR"
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              "option",
               { value: "1" },
-              "1 BR"
+              "1+ BR"
             ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               "option",
               { value: "2" },
-              "2 BR"
+              "2+ BR"
             ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               "option",
               { value: "3" },
-              "3 BR"
+              "3+ BR"
             ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               "option",
               { value: "4" },
-              "4 BR"
+              "4+ BR"
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              "option",
+              { value: "5" },
+              "5+ BR"
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              "option",
+              { value: "6" },
+              "6+ BR"
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              "option",
+              { value: "7" },
+              "7+ BR"
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              "option",
+              { value: "7" },
+              "8+ BR"
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              "option",
+              { value: "9" },
+              "9+ BR"
             )
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -362,6 +457,10 @@ var Listings = function (_Component) {
     value: function loopListings() {
       var listingsData = this.props.listingsData;
 
+
+      if (listingsData == undefined || listingsData.length == 0) {
+        return "Sorry your filter did not match any listing";
+      }
 
       return listingsData.map(function (listing, index) {
         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -708,6 +807,9 @@ var App = function (_Component) {
     _this.state = {
       name: "Mark",
       listingsData: __WEBPACK_IMPORTED_MODULE_5__data_listingsData_js__["a" /* default */],
+      city: 'All',
+      homeType: '0',
+      bedrooms: 0,
       min_price: 0,
       max_price: 10000000,
       min_floor_space: 0,
@@ -715,9 +817,11 @@ var App = function (_Component) {
       elevator: false,
       finished_basement: false,
       swimming_pool: false,
-      gym: false
+      gym: false,
+      filteredData: __WEBPACK_IMPORTED_MODULE_5__data_listingsData_js__["a" /* default */]
     };
     _this.change = _this.change.bind(_this);
+    _this.filteredData = _this.filteredData.bind(_this);
     return _this;
   }
 
@@ -729,13 +833,36 @@ var App = function (_Component) {
       var name = event.target.name;
       var value = event.target.type === "checkbox" ? event.target.checked : event.target.value;
       this.setState(_defineProperty({}, name, value), function () {
-        console.log(_this2.state);
+        _this2.filteredData();
+      });
+    }
+  }, {
+    key: "filteredData",
+    value: function filteredData() {
+      var _this3 = this;
+
+      var newData = this.state.listingsData.filter(function (item) {
+        return item.price >= _this3.state.min_price && item.price <= _this3.state.max_price && item.floorspace >= _this3.state.min_floor_space && item.floorspace <= _this3.state.max_floor_space && item.rooms >= _this3.state.bedrooms;
+      });
+
+      if (this.state.city != "All") {
+        newData = newData.filter(function (item) {
+          return item.city == _this3.state.city;
+        });
+      }
+      if (this.state.homeType != "All") {
+        newData = newData.filter(function (item) {
+          return item.homeType == _this3.state.homeType;
+        });
+      }
+      this.setState({
+        filteredData: newData
       });
     }
   }, {
     key: "render",
     value: function render() {
-      console.log(this.state);
+
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         "div",
         null,
@@ -744,7 +871,7 @@ var App = function (_Component) {
           "section",
           { id: "content-area" },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__Filter_js__["a" /* default */], { change: this.change, globalState: this.state }),
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__Listings_js__["a" /* default */], { listingsData: this.state.listingsData })
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__Listings_js__["a" /* default */], { listingsData: this.state.filteredData })
         )
       );
     }
