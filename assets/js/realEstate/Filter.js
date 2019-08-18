@@ -6,6 +6,52 @@ export default class Filter extends Component {
     this.state = {
       name: "Mark"
     };
+    this.cities = this.cities.bind(this);
+    this.homeTypes = this.homeTypes.bind(this);
+    this.bedrooms = this.bedrooms.bind(this);
+  }
+
+  componentWillMount() {
+    this.props.populateAction();
+  }
+
+  cities() {
+    if (this.props.globalState.populateFormsData.cities != undefined) {
+      var { cities } = this.props.globalState.populateFormsData;
+      return cities.map(item => {
+        return (
+          <option key={item} value={item}>
+            {item}
+          </option>
+        );
+      });
+    }
+  }
+
+  homeTypes() {
+    if (this.props.globalState.populateFormsData.homeTypes != undefined) {
+      var { homeTypes } = this.props.globalState.populateFormsData;
+      return homeTypes.map(item => {
+        return (
+          <option key={item} value={item}>
+            {item}
+          </option>
+        );
+      });
+    }
+  }
+
+  bedrooms() {
+    if (this.props.globalState.populateFormsData.bedrooms != undefined) {
+      var { bedrooms } = this.props.globalState.populateFormsData;
+      return bedrooms.map(item => {
+        return (
+          <option key={item} value={item}>
+            {item}+ BR
+          </option>
+        );
+      });
+    }
   }
 
   render() {
@@ -20,15 +66,7 @@ export default class Filter extends Component {
             onChange={this.props.change}
           >
             <option value="All">All</option>
-            <option value="Ridgewood">Ridgewood</option>
-            <option value="East Boston">Boston</option>
-            <option value="Los Angeles">Los Angeles</option>
-            <option value="Miami">Miami</option>
-            <option value="New York">New York</option>
-            <option value="Minneapolis">Minneapolis</option>
-            <option value="San Diego">San Diego</option>
-            <option value="Revere">Revere</option>
-            <option value="Atlanta">Atlanta</option>
+            {this.cities()}
           </select>
           <label htmlFor="Home Type"> Home Type </label>
           <select
@@ -37,12 +75,7 @@ export default class Filter extends Component {
             onChange={this.props.change}
           >
             <option value="All">All Homes</option>
-            <option value="Ranch">Ranch</option>
-            <option value="Apartment">Apartment</option>
-            <option value="Studio">Studio</option>
-            <option value="House">House</option>
-            <option value="Room">Room</option>
-            <option value="Condo">Condo</option>
+            {this.homeTypes()}
           </select>
           <label htmlFor="rooms">Bedrooms</label>
           <select
@@ -51,15 +84,7 @@ export default class Filter extends Component {
             onChange={this.props.change}
           >
             <option value="0">0+ BR</option>
-            <option value="1">1+ BR</option>
-            <option value="2">2+ BR</option>
-            <option value="3">3+ BR</option>
-            <option value="4">4+ BR</option>
-            <option value="5">5+ BR</option>
-            <option value="6">6+ BR</option>
-            <option value="7">7+ BR</option>
-            <option value="7">8+ BR</option>
-            <option value="9">9+ BR</option>
+            {this.bedrooms()}
           </select>
 
           <div className="filters price">

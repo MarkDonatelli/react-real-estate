@@ -11,8 +11,8 @@ class App extends Component {
     this.state = {
       name: "Mark",
       listingsData,
-      city: 'All',
-      homeType: '0',
+      city: "All",
+      homeType: "0",
       bedrooms: 0,
       min_price: 0,
       max_price: 10000000,
@@ -22,10 +22,12 @@ class App extends Component {
       finished_basement: false,
       swimming_pool: false,
       gym: false,
-      filteredData: listingsData
+      filteredData: listingsData,
+      populateFormsData: ""
     };
     this.change = this.change.bind(this);
     this.filteredData = this.filteredData.bind(this);
+    this.populateForms = this.populateForms.bind(this);
   }
 
   change(event) {
@@ -39,38 +41,85 @@ class App extends Component {
         [name]: value
       },
       () => {
-        this.filteredData()
+        this.filteredData();
       }
     );
   }
   filteredData() {
-    var newData = this.state.listingsData.filter((item) => {
-      return item.price >= this.state.min_price && item.price <= this.state.max_price &&
-      item.floorspace >= this.state.min_floor_space && item.floorspace <= this.state.max_floor_space &&
-      item.rooms >= this.state.bedrooms 
-    })
+    var newData = this.state.listingsData.filter(item => {
+      return (
+        item.price >= this.state.min_price &&
+        item.price <= this.state.max_price &&
+        item.floorspace >= this.state.min_floor_space &&
+        item.floorspace <= this.state.max_floor_space &&
+        item.rooms >= this.state.bedrooms
+      );
+    });
 
     if (this.state.city != "All") {
-      newData = newData.filter((item) => {
-        return item.city == this.state.city
-      })
+      newData = newData.filter(item => {
+        return item.city == this.state.city;
+      });
     }
     if (this.state.homeType != "All") {
-      newData = newData.filter((item) => {
-        return item.homeType == this.state.homeType
-      })
+      newData = newData.filter(item => {
+        return item.homeType == this.state.homeType;
+      });
     }
     this.setState({
-      filteredData:newData
-    })
+      filteredData: newData
+    });
   }
-  render() {
 
+  populateForms() {
+    //city
+    var cities = this.state.listingsData.map(item => {
+      return item.city;
+    });
+
+    cities = new Set(cities);
+    cities = [...cities];
+
+    //hometype
+    var homeTypes = this.state.listingsData.map(item => {
+      return item.homeTypes;
+    });
+
+    homeTypes = new Set(homeTypes);
+    homeTypes = [...homeTypes];
+
+    //bedrooms
+    var bedrooms = this.state.listingsData.map(item => {
+      return item.rooms;
+    });
+
+    bedrooms = new Set(bedrooms);
+    bedrooms = [...bedrooms];
+
+    this.setState(
+      {
+        populateFormsData: {
+          homeTypes,
+          bedrooms,
+          cities
+        }
+      },
+      () => {
+        console.log(this.state);
+      }
+    );
+  }
+
+  render() {
     return (
       <div>
         <Header />
         <section id="content-area">
-          <Filter change={this.change} globalState={this.state} />
+          <Filter
+            change={this.change}
+            globalState={this.state}
+            populateAction={this.populateForms}
+          />
           <Listings listingsData={this.state.filteredData} />
         </section>
       </div>
